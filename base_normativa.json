@@ -1,4 +1,68 @@
-"baseLegal": "D.S. 007-98-SA, art. 40",
+{
+  "Pesca artesanal": [
+    {
+      "id": "PA-1",
+      "nombre": "Permiso de pesca de la embarcación",
+      "critico": true,
+      "glosario": "Comprueba que tienes el permiso correspondiente antes de salir a pescar. La matrícula no sustituye al permiso.",
+      "baseLegal": "Decreto Ley 25977, art. 43 literal c), art. 76 numeral 1",
+      "entidad": "Gobierno regional (DIREPRO o equivalente); fiscalización pesquera según competencia de GORE/PRODUCE",
+      "aplicabilidad": "Titular de embarcación artesanal de bandera nacional dedicada a extracción.",
+      "plazo": "Antes de operar; verificar condiciones y vigencia del permiso.",
+      "fuente": "https://diariooficial.elperuano.pe/Normas/obtenerDocumento?idNorma=51"
+    },
+    {
+      "id": "PA-2",
+      "nombre": "Respeto de vedas, tallas y zonas autorizadas",
+      "critico": true,
+      "glosario": "Revisa las restricciones de la especie y zona antes de cada faena.",
+      "baseLegal": "Decreto Ley 25977, art. 76 numerales 2 y 3",
+      "entidad": "PRODUCE y gobiernos regionales, según competencia",
+      "aplicabilidad": "Extracción de recursos hidrobiológicos; las restricciones varían según especie y zona.",
+      "plazo": "En cada faena; consultar las disposiciones específicas vigentes.",
+      "fuente": "https://diariooficial.elperuano.pe/Normas/obtenerDocumento?idNorma=51"
+    },
+    {
+      "id": "PA-3",
+      "nombre": "Manipulación sanitaria de la captura a bordo",
+      "critico": true,
+      "glosario": "Evita contaminar o dañar el pescado durante su manipulación.",
+      "baseLegal": "D.S. 020-2022-PRODUCE, art. 25.1; el numeral 1 fue modificado por D.S. 005-2025-PRODUCE.",
+      "entidad": "SANIPES",
+      "aplicabilidad": "Embarcaciones pesqueras comerciales, incluida la pesca artesanal embarcada.",
+      "plazo": "Durante cada faena.",
+      "fuente": "https://www.sanipes.gob.pe/documentos_sanipes/ds/2023/DS%20N020-2022-PRODUCE.pdf"
+    }
+  ],
+  "Agroindustria": [
+    {
+      "id": "AG-1",
+      "nombre": "Registro sanitario del producto industrializado",
+      "critico": true,
+      "glosario": "Comprueba que el alimento industrializado sujeto a registro cuenta con el trámite correspondiente antes de venderlo.",
+      "baseLegal": "D.S. 007-98-SA, arts. 101 y 102",
+      "entidad": "DIGESA (MINSA)",
+      "aplicabilidad": "Alimentos y bebidas industrializados de consumo humano sujetos a registro y comercializados en Perú. No incluye automáticamente el procesamiento primario.",
+      "plazo": "Antes de comercializar; verificar vigencia y condiciones del registro.",
+      "fuente": "https://www.digesa.minsa.gob.pe/normaslegales/normas/ds007_98.pdf"
+    },
+    {
+      "id": "AG-2",
+      "nombre": "Programa de limpieza y desinfección",
+      "critico": true,
+      "glosario": "Organiza y ejecuta la limpieza del local para evitar contaminar los alimentos.",
+      "baseLegal": "D.S. 007-98-SA, art. 56",
+      "entidad": "Autoridad sanitaria competente (DIGESA o autoridad regional, según competencia)",
+      "aplicabilidad": "Fábricas de alimentos y bebidas del perfil industrializado seleccionado.",
+      "plazo": "Al finalizar la jornada y cuando sea necesario.",
+      "fuente": "https://www.digesa.minsa.gob.pe/normaslegales/normas/ds007_98.pdf"
+    },
+    {
+      "id": "AG-3",
+      "nombre": "Agua apta para elaborar alimentos",
+      "critico": true,
+      "glosario": "Usa agua que cumpla los requisitos sanitarios aplicables al consumo humano.",
+      "baseLegal": "D.S. 007-98-SA, art. 40",
       "entidad": "Autoridad sanitaria competente (DIGESA o autoridad regional, según competencia)",
       "aplicabilidad": "Fabricación de alimentos y bebidas del perfil seleccionado que utiliza agua en sus procesos o en operaciones de higiene.",
       "plazo": "Durante la fabricación y según el programa de control sanitario.",
