@@ -7,19 +7,28 @@ const REQUISITOS_RESPALDO = {
       id: "PA-1",
       nombre: "Permiso de pesca de la embarcación",
       critico: true,
-      glosario: "Comprueba que tienes el permiso correspondiente antes de salir a pescar. La matrícula no sustituye al permiso."
+      glosario: "Comprueba que tienes el permiso correspondiente antes de salir a pescar. La matrícula no sustituye al permiso.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Es la autorización oficial que te permite extraer pescado o mariscos con tu bote o lancha. Tener la matrícula de la embarcación (DICAPI) solo identifica tu bote, pero NO te da permiso para pescar.",
+      pasoPractico: "Verifica que tu Resolución Directoral de permiso de pesca esté vigente y lleva una copia plastificada o digital a bordo antes de zarpar."
     },
     {
       id: "PA-2",
       nombre: "Respeto de vedas, tallas y zonas autorizadas",
       critico: true,
-      glosario: "Revisa las restricciones de la especie y zona antes de cada faena."
+      glosario: "Revisa las restricciones de la especie y zona antes de cada faena.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Hay épocas en las que está prohibido pescar ciertas especies para que se reproduzcan (vedas), tamaños mínimos que debes respetar para no llevarte crías, y zonas exclusivas donde solo pueden operar botes artesanales.",
+      pasoPractico: "Antes de salir a la mar, revisa los comunicados vigentes de PRODUCE o DIREPRO sobre vedas y lleva una regla o cinta métrica a bordo para medir las tallas mínimas de tu captura."
     },
     {
       id: "PA-3",
       nombre: "Manipulación sanitaria de la captura a bordo",
       critico: true,
-      glosario: "Evita contaminar o dañar el pescado durante su manipulación."
+      glosario: "Evita contaminar o dañar el pescado durante su manipulación.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Desde que subes el pescado al bote hasta que llegas al desembarcadero, debes mantenerlo limpio y frío para que no se malogre ni se contamine con combustible, agua sucia o el sol.",
+      pasoPractico: "Usa cajas plásticas limpias (nunca madera astillada ni directo en el piso), utiliza hielo apto para alimentos y lava las superficies de trabajo con agua limpia."
     }
   ],
   "Agroindustria": [
@@ -27,19 +36,28 @@ const REQUISITOS_RESPALDO = {
       id: "AG-1",
       nombre: "Registro sanitario del producto industrializado",
       critico: true,
-      glosario: "Comprueba que el alimento industrializado sujeto a registro cuenta con el trámite correspondiente antes de venderlo."
+      glosario: "Comprueba que el alimento industrializado sujeto a registro cuenta con el trámite correspondiente antes de venderlo.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Si transformas o envasas un alimento (por ejemplo: mermeladas, harinas, néctares, conservas o snacks empacados), necesitas un código oficial de DIGESA que garantice que el producto es seguro para el consumidor.",
+      pasoPractico: "Tramita tu Registro Sanitario en la plataforma VUCE antes de imprimir etiquetas o vender en tiendas, y coloca el código asignado en cada envase."
     },
     {
       id: "AG-2",
       nombre: "Programa de limpieza y desinfección",
       critico: true,
-      glosario: "Organiza y ejecuta la limpieza del local para evitar contaminar los alimentos."
+      glosario: "Organiza y ejecuta la limpieza del local para evitar contaminar los alimentos.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "No basta con limpiar 'al ojo'; debes tener un plan escrito que indique qué mesas, máquinas y pisos se limpian, con qué productos, cada cuánto tiempo y quién es el responsable.",
+      pasoPractico: "Pega un cronograma de limpieza en tu área de producción y llena una hoja de registro diario cada vez que termines de lavar y desinfectar el local."
     },
     {
       id: "AG-3",
       nombre: "Agua apta para elaborar alimentos",
       critico: true,
-      glosario: "Usa agua que cumpla los requisitos sanitarios aplicables al consumo humano."
+      glosario: "Usa agua que cumpla los requisitos sanitarios aplicables al consumo humano.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Toda el agua que entra en contacto con el alimento, sirve para preparar el producto o se usa para lavar envases y utensilios debe ser potable y segura, sin bacterias ni exceso de cloro o metales.",
+      pasoPractico: "Si usas agua de tanque, pozo o cisterna, programa análisis periódicos de calidad de agua y mantén limpios y bien tapados tus depósitos."
     }
   ],
   "Manufactura": [
@@ -47,25 +65,37 @@ const REQUISITOS_RESPALDO = {
       id: "MF-1",
       nombre: "Licencia municipal de funcionamiento e ITSE",
       critico: true,
-      glosario: "Antes de abrir el taller o planta, verifica la licencia municipal y las condiciones de seguridad del establecimiento."
+      glosario: "Antes de abrir el taller o planta, verifica la licencia municipal y las condiciones de seguridad del establecimiento.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Es el permiso de la municipalidad para que tu taller o fábrica funcione en esa dirección (zonificación) junto con el certificado de Defensa Civil (ITSE) que confirma que el local es seguro contra incendios o accidentes.",
+      pasoPractico: "Verifica en tu municipalidad si la calle permite uso industrial o taller, y ten listos extintores vigentes, botiquín y señalización de salida antes de solicitar la licencia."
     },
     {
       id: "MF-2",
       nombre: "Instrumento de Gestión Ambiental correspondiente",
       critico: true,
-      glosario: "Identifica qué instrumento ambiental corresponde a tu actividad y cumple sus compromisos."
+      glosario: "Identifica qué instrumento ambiental corresponde a tu actividad y cumple sus compromisos.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Es un estudio o ficha donde explicas cómo vas a controlar el humo, ruido, agua sucia o desechos de tu fábrica para no afectar a los vecinos ni al ambiente.",
+      pasoPractico: "Consulta en PRODUCE si tu tipo de taller necesita una ficha técnica ambiental o estudio preventivo antes de instalar maquinaria pesada."
     },
     {
       id: "MF-3",
       nombre: "Evaluación de riesgos laborales y equipos de protección",
       critico: true,
-      glosario: "Identifica los peligros de máquinas, herramientas, sustancias y procesos y entrega los EPP correspondientes."
+      glosario: "Identifica los peligros de máquinas, herramientas, sustancias y procesos y entrega los EPP correspondientes.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Si tienes trabajadores en el taller, debes revisar qué máquinas o químicos pueden lastimarlos (matriz IPERC) y entregarles gratis sus implementos de seguridad (cascos, guantes, lentes o botas).",
+      pasoPractico: "Haz una lista de los riesgos por cada máquina de tu taller y guarda una hoja firmada por cada trabajador cada vez que le entregues sus equipos de protección (EPP)."
     },
     {
       id: "MF-4",
       nombre: "Manejo de residuos sólidos no municipales y reportes SIGERSOL",
       critico: true,
-      glosario: "Separa, almacena y entrega los residuos industriales de forma adecuada."
+      glosario: "Separa, almacena y entrega los residuos industriales de forma adecuada.",
+      // AGREGADO POR BADA, Traducción legal en lenguaje sencillo y paso práctico
+      explicacionSimple: "Los desechos de tu producción (aceites usados, retazos químicos, envases industriales) no se botan al camión de basura común; debes separarlos y entregarlos a una empresa operadora autorizada (EO-RS).",
+      pasoPractico: "Coloca tachos diferenciados en tu taller, guarda los certificados o manifiestos de entrega de residuos peligrosos y verifica si te toca declararlos en el portal SIGERSOL."
     }
   ],
   "Minería en formalización": [
@@ -91,7 +121,7 @@ const REQUISITOS_RESPALDO = {
   "Otro rubro productivo": [
     {
       id: "OT-1",
-      nombre: "Identificación formal del negocio y permisos base",
+      nombre: "Identificacion formal del negocio y permisos base",
       critico: true,
       glosario: "La base para operar con respaldo y acceder a mejores clientes."
     },
@@ -179,6 +209,24 @@ function renderizarRequisitosRubro() {
     const codigo = req.id ? req.id + " — " : "";
     const badge = req.critico ? '<span class="badge-critico">Clave</span>' : "";
 
+    // =========================================================================
+    // AGREGADO POR BADA, Bloque del Traductor Legal en lenguaje simple
+    // Lee 'explicacionSimple' y 'pasoPractico' desde base-normativa.json
+    // =========================================================================
+    let bloqueTraductor = "";
+    if (req.explicacionSimple || req.pasoPractico) {
+      bloqueTraductor += '<div class="caja-traductor-legal">';
+      bloqueTraductor += '<div class="etiqueta-traductor">Traductor Legal (Lenguaje Simple)</div>';
+      if (req.explicacionSimple) {
+        bloqueTraductor += "<p><strong>¿Qué significa para ti?</strong> " + req.explicacionSimple + "</p>";
+      }
+      if (req.pasoPractico) {
+        bloqueTraductor += "<p><strong>¿Qué debes tener listo?</strong> " + req.pasoPractico + "</p>";
+      }
+      bloqueTraductor += "</div>";
+    }
+    // =========================================================================
+
     let detalleNormativo = "";
     if (req.baseLegal || req.entidad || req.aplicabilidad || req.plazo || req.fuente) {
       detalleNormativo += '<div class="detalle-normativo">';
@@ -222,6 +270,7 @@ function renderizarRequisitosRubro() {
       '<p class="glosario-requisito">' +
       req.glosario +
       "</p>" +
+      bloqueTraductor + // AGREGADO POR BADA, Renderiza la caja de lenguaje simple junto a la base legal
       detalleNormativo;
 
     contenedor.appendChild(tarjetaReq);

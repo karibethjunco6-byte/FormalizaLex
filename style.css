@@ -217,6 +217,33 @@ button:hover {
   color: #475569;
 }
 
+/* =========================================================================
+   AGREGADO POR BADA, Estilos para la tarjeta del Traductor Legal
+   ========================================================================= */
+.caja-traductor-legal {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background-color: #eff6ff;
+  border-left: 4px solid var(--color-primario);
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: #1e293b;
+}
+
+.etiqueta-traductor {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-primario);
+  margin-bottom: 4px;
+}
+
+.caja-traductor-legal p {
+  margin: 4px 0;
+}
+/* ========================================================================= */
+
 .detalle-normativo {
   margin-top: 8px;
   padding-top: 8px;

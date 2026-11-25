@@ -13,7 +13,7 @@
         <h1>FormalizaLex: Tu negocio en regla</h1>
         <p class="subtitulo">
           Herramienta práctica y en palabras simples para productores, talleres, asociaciones y mypes (pesca artesanal,
-          agroindustria, manufactura, minería en formalización y otros rubros).
+          agroindustria, manufactura y actividades productivas afines).
         </p>
       </div>
     </header>
@@ -30,11 +30,14 @@
 
             <label for="prod-rubro">¿A qué rubro te dedicas?</label>
             <select id="prod-rubro">
+              <!-- ACTUALIZADO POR BADA, Se mantienen activos los 2 rubros del enfoque principal -->
               <option value="Pesca artesanal">Pesca artesanal</option>
               <option value="Agroindustria">Agroindustria</option>
-              <option value="Manufactura">Manufactura</option>
-              <option value="Minería en formalización">Minería en formalización</option>
-              <option value="Otro rubro productivo">Otro rubro productivo</option>
+
+              <!-- COMENTADO POR BADA, Opciones dejadas fuera de la vista principal (escalabilidad futura) -->
+              <!-- <option value="Manufactura">Manufactura</option> -->
+              <!-- <option value="Minería en formalización">Minería en formalización</option> -->
+              <!-- <option value="Otro rubro productivo">Otro rubro productivo</option> -->
             </select>
 
             <label for="prod-dias-plazo">Días que faltan para tu fecha o trámite más próximo</label>
@@ -63,7 +66,8 @@
           </div>
         </div>
 
-        <h3>Lista base de tu rubro (cambia el estado de cada punto)</h3>
+        <!-- ACTUALIZADO POR BADA, Se indica en el subtítulo la integración del Traductor Legal -->
+        <h3>Lista base de tu rubro y Traductor Legal (cambia el estado de cada punto)</h3>
         <div id="contenedor-requisitos"></div>
       </section>
 
@@ -168,10 +172,11 @@
       </section>
 
       <footer class="tarjeta nota-control">
+        <!-- ACTUALIZADO POR BADA, Nota de control sobre base legal verificada y supervisión humana -->
         <p>
-          <strong>Nota sencilla:</strong> Esta herramienta organiza tus pendientes, calcula escenarios con números fijos
-          y te ayuda a prevenir descuidos en palabras claras. No reemplaza la orientación de un abogado ni trámites
-          oficiales.
+          <strong>Nota sencilla (supervisión humana y alcance):</strong> Esta herramienta organiza tus pendientes,
+          traduce requisitos normativos a lenguaje claro sobre base legal verificada y calcula escenarios con números
+          fijos. Es una guía preventiva y orientativa; no reemplaza la orientación de un abogado ni trámites oficiales.
         </p>
       </footer>
     </main>
