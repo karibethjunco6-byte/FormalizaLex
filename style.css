@@ -217,6 +217,23 @@ button:hover {
   color: #475569;
 }
 
+.detalle-normativo {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #cbd5e1;
+  font-size: 13px;
+  color: #334155;
+}
+
+.detalle-normativo div {
+  margin-bottom: 4px;
+}
+
+.detalle-normativo a {
+  color: var(--color-primario);
+  font-weight: bold;
+}
+
 .tabla-datos {
   width: 100%;
   border-collapse: collapse;

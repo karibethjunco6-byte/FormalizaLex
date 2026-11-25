@@ -1,95 +1,140 @@
 // ==========================================
 // 1. REQUISITOS POR RUBRO Y SEMAFORO MYPE
 // ==========================================
-const REQUISITOS_POR_RUBRO = {
+const REQUISITOS_RESPALDO = {
   "Pesca artesanal": [
     {
-      nombre: "Permiso o matrícula vigente",
+      id: "PA-1",
+      nombre: "Permiso de pesca de la embarcación",
       critico: true,
-      glosario: "En palabras simples: acredita que puedes trabajar legalmente sin que detengan tu faena."
+      glosario: "Comprueba que tienes el permiso correspondiente antes de salir a pescar. La matrícula no sustituye al permiso."
     },
     {
-      nombre: "Control de desembarque o jornada",
-      critico: false,
-      glosario: "En palabras simples: anotar tus salidas y cantidades te ayuda a llevar orden y evitar observaciones."
+      id: "PA-2",
+      nombre: "Respeto de vedas, tallas y zonas autorizadas",
+      critico: true,
+      glosario: "Revisa las restricciones de la especie y zona antes de cada faena."
     },
     {
-      nombre: "Higiene y frío básico del producto",
+      id: "PA-3",
+      nombre: "Manipulación sanitaria de la captura a bordo",
       critico: true,
-      glosario: "En palabras simples: cuidar la limpieza protege la calidad de tu pesca y evita decomisos."
+      glosario: "Evita contaminar o dañar el pescado durante su manipulación."
     }
   ],
   "Agroindustria": [
     {
-      nombre: "Condiciones sanitarias y del local",
+      id: "AG-1",
+      nombre: "Registro sanitario del producto industrializado",
       critico: true,
-      glosario: "En palabras simples: muestra que tu espacio de proceso o envasado es seguro para alimentos o insumos."
+      glosario: "Comprueba que el alimento industrializado sujeto a registro cuenta con el trámite correspondiente antes de venderlo."
     },
     {
-      nombre: "Origen y control de tus lotes",
-      critico: false,
-      glosario: "En palabras simples: saber de dónde vino cada insumo evita pérdidas si hay un reclamo o revisión."
+      id: "AG-2",
+      nombre: "Programa de limpieza y desinfección",
+      critico: true,
+      glosario: "Organiza y ejecuta la limpieza del local para evitar contaminar los alimentos."
     },
     {
-      nombre: "Manejo de agua y residuos",
+      id: "AG-3",
+      nombre: "Agua apta para elaborar alimentos",
       critico: true,
-      glosario: "En palabras simples: evitar verter desechos sin control previene multas o paralizaciones."
+      glosario: "Usa agua que cumpla los requisitos sanitarios aplicables al consumo humano."
     }
   ],
   "Manufactura": [
     {
-      nombre: "Permisos y seguridad básica del taller",
+      id: "MF-1",
+      nombre: "Licencia municipal de funcionamiento e ITSE",
       critico: true,
-      glosario: "En palabras simples: tener extintor, rutas libres y permisos al día evita cierres inesperados."
+      glosario: "Antes de abrir el taller o planta, verifica la licencia municipal y las condiciones de seguridad del establecimiento."
     },
     {
-      nombre: "Protección en máquinas y herramientas",
+      id: "MF-2",
+      nombre: "Instrumento de Gestión Ambiental correspondiente",
       critico: true,
-      glosario: "En palabras simples: un accidente en el taller cuesta caro y frena el trabajo de todos."
+      glosario: "Identifica qué instrumento ambiental corresponde a tu actividad y cumple sus compromisos."
     },
     {
-      nombre: "Orden de retazos y residuos",
-      critico: false,
-      glosario: "En palabras simples: separar sobrantes mantiene el taller seguro y dentro de norma."
+      id: "MF-3",
+      nombre: "Evaluación de riesgos laborales y equipos de protección",
+      critico: true,
+      glosario: "Identifica los peligros de máquinas, herramientas, sustancias y procesos y entrega los EPP correspondientes."
+    },
+    {
+      id: "MF-4",
+      nombre: "Manejo de residuos sólidos no municipales y reportes SIGERSOL",
+      critico: true,
+      glosario: "Separa, almacena y entrega los residuos industriales de forma adecuada."
     }
   ],
   "Minería en formalización": [
     {
-      nombre: "Instrumento ambiental en seguimiento",
+      id: "MN-1",
+      nombre: "Inscripción vigente en REINFO y RUC activo",
       critico: true,
-      glosario: "En palabras simples: es el documento donde explicas cómo cuidas el entorno al trabajar."
+      glosario: "Verifica que tu inscripción en el REINFO figure vigente y que tu RUC esté activo."
     },
     {
-      nombre: "Acreditación de terreno o acuerdo vigente",
+      id: "MN-2",
+      nombre: "IGAFOM correctivo y preventivo",
       critico: true,
-      glosario: "En palabras simples: respalda que tienes permiso para operar en ese espacio sin conflictos."
+      glosario: "Describe las medidas para corregir y prevenir impactos de la actividad minera."
     },
     {
-      nombre: "Seguridad y control de insumos",
+      id: "MN-3",
+      nombre: "Acreditación de concesión minera y uso del terreno superficial",
       critico: true,
-      glosario: "En palabras simples: reduce riesgos físicos y evita observaciones en tu expediente."
+      glosario: "Acredita tanto el derecho sobre la concesión como el uso del terreno superficial."
     }
   ],
   "Otro rubro productivo": [
     {
-      nombre: "Formalidad básica del negocio y permisos",
+      id: "OT-1",
+      nombre: "Identificación formal del negocio y permisos base",
       critico: true,
-      glosario: "En palabras simples: te da respaldo para vender con tranquilidad y crecer sin tropiezos."
+      glosario: "La base para operar con respaldo y acceder a mejores clientes."
     },
     {
-      nombre: "Calendario de fechas y pagos",
+      id: "OT-2",
+      nombre: "Calendario de fechas y pagos clave",
       critico: false,
-      glosario: "En palabras simples: anotar vencimientos evita pagar recargos solo por olvido."
+      glosario: "Evita recargos o multas por olvidar una fecha."
     },
     {
-      nombre: "Archivo de cargos y comprobantes",
+      id: "OT-3",
+      nombre: "Respaldo de cargos y comprobantes",
       critico: false,
-      glosario: "En palabras simples: guardar constancias te sirve como prueba si alguien pregunta."
+      glosario: "Guardar constancias te sirve como prueba si hay una revisión."
     }
   ]
 };
 
+let requisitosPorRubro = { ...REQUISITOS_RESPALDO };
 let estadosActualesRequisitos = [];
+
+async function cargarBaseNormativa() {
+  try {
+    const respuesta = await fetch("base-normativa.json");
+    if (!respuesta.ok) {
+      throw new Error("No se pudo leer base-normativa.json");
+    }
+    const datosJson = await respuesta.json();
+    requisitosPorRubro = {
+      ...REQUISITOS_RESPALDO,
+      ...datosJson
+    };
+  } catch (err) {
+    console.warn("Usando datos de respaldo locales:", err.message);
+    requisitosPorRubro = { ...REQUISITOS_RESPALDO };
+  }
+  renderizarRequisitosRubro();
+}
+
+function obtenerListaRubroActual() {
+  const rubro = document.getElementById("prod-rubro").value;
+  return requisitosPorRubro[rubro] || REQUISITOS_RESPALDO[rubro] || [];
+}
 
 function obtenerMetricasRequisitos() {
   const total = estadosActualesRequisitos.length;
@@ -97,14 +142,13 @@ function obtenerMetricasRequisitos() {
     return { porcentaje: 0, criticosPendientes: 0 };
   }
 
-  const rubro = document.getElementById("prod-rubro").value;
-  const listaBase = REQUISITOS_POR_RUBRO[rubro] || [];
+  const listaBase = obtenerListaRubroActual();
   let alDia = 0;
   let criticosPendientes = 0;
 
   for (let i = 0; i < total; i = i + 1) {
     const estado = estadosActualesRequisitos[i];
-    const esCritico = listaBase[i] ? listaBase[i].critico : false;
+    const esCritico = listaBase[i] ? Boolean(listaBase[i].critico) : false;
     if (estado === "al_dia") {
       alDia = alDia + 1;
     } else if (esCritico) {
@@ -119,8 +163,7 @@ function obtenerMetricasRequisitos() {
 }
 
 function renderizarRequisitosRubro() {
-  const rubro = document.getElementById("prod-rubro").value;
-  const listaBase = REQUISITOS_POR_RUBRO[rubro] || [];
+  const listaBase = obtenerListaRubroActual();
   estadosActualesRequisitos = listaBase.map(function () {
     return "pendiente";
   });
@@ -133,11 +176,37 @@ function renderizarRequisitosRubro() {
     const tarjetaReq = document.createElement("div");
     tarjetaReq.className = "item-requisito";
 
+    const codigo = req.id ? req.id + " — " : "";
     const badge = req.critico ? '<span class="badge-critico">Clave</span>' : "";
+
+    let detalleNormativo = "";
+    if (req.baseLegal || req.entidad || req.aplicabilidad || req.plazo || req.fuente) {
+      detalleNormativo += '<div class="detalle-normativo">';
+      if (req.baseLegal) {
+        detalleNormativo += "<div><strong>Base legal:</strong> " + req.baseLegal + "</div>";
+      }
+      if (req.entidad) {
+        detalleNormativo += "<div><strong>Entidad:</strong> " + req.entidad + "</div>";
+      }
+      if (req.aplicabilidad) {
+        detalleNormativo += "<div><strong>A quién aplica:</strong> " + req.aplicabilidad + "</div>";
+      }
+      if (req.plazo) {
+        detalleNormativo += "<div><strong>Plazo:</strong> " + req.plazo + "</div>";
+      }
+      if (req.fuente) {
+        detalleNormativo +=
+          '<div><strong>Fuente:</strong> <a href="' +
+          req.fuente +
+          '" target="_blank" rel="noopener noreferrer">Consultar norma oficial</a></div>';
+      }
+      detalleNormativo += "</div>";
+    }
 
     tarjetaReq.innerHTML =
       '<div class="cabecera-requisito">' +
       "<div><strong>" +
+      codigo +
       req.nombre +
       "</strong>" +
       badge +
@@ -152,7 +221,8 @@ function renderizarRequisitosRubro() {
       "</div>" +
       '<p class="glosario-requisito">' +
       req.glosario +
-      "</p>";
+      "</p>" +
+      detalleNormativo;
 
     contenedor.appendChild(tarjetaReq);
   }
@@ -335,6 +405,6 @@ document.getElementById("btn-validar-sub").addEventListener("click", function ()
 });
 
 // Inicializar al cargar
-renderizarRequisitosRubro();
+cargarBaseNormativa();
 actualizarEscenariosRetraso();
 calcularPlanYVigencia();
