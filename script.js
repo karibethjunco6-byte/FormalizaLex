@@ -1,110 +1,122 @@
 // ==========================================
 // 1. REQUISITOS POR RUBRO Y SEMAFORO MYPE
+// La información normativa se carga desde base_normativa.json.
+// Mantener ambos archivos en la misma carpeta.
 // ==========================================
-const REQUISITOS_POR_RUBRO = {
-  "Pesca artesanal": [
-    {
-      nombre: "Permiso o matrícula vigente",
-      critico: true,
-      glosario: "En palabras simples: acredita que puedes trabajar legalmente sin que detengan tu faena."
-    },
-    {
-      nombre: "Control de desembarque o jornada",
-      critico: false,
-      glosario: "En palabras simples: anotar tus salidas y cantidades te ayuda a llevar orden y evitar observaciones."
-    },
-    {
-      nombre: "Higiene y frío básico del producto",
-      critico: true,
-      glosario: "En palabras simples: cuidar la limpieza protege la calidad de tu pesca y evita decomisos."
-    }
-  ],
-  "Agroindustria": [
-    {
-      nombre: "Condiciones sanitarias y del local",
-      critico: true,
-      glosario: "En palabras simples: muestra que tu espacio de proceso o envasado es seguro para alimentos o insumos."
-    },
-    {
-      nombre: "Origen y control de tus lotes",
-      critico: false,
-      glosario: "En palabras simples: saber de dónde vino cada insumo evita pérdidas si hay un reclamo o revisión."
-    },
-    {
-      nombre: "Manejo de agua y residuos",
-      critico: true,
-      glosario: "En palabras simples: evitar verter desechos sin control previene multas o paralizaciones."
-    }
-  ],
-  "Manufactura": [
-    {
-      nombre: "Permisos y seguridad básica del taller",
-      critico: true,
-      glosario: "En palabras simples: tener extintor, rutas libres y permisos al día evita cierres inesperados."
-    },
-    {
-      nombre: "Protección en máquinas y herramientas",
-      critico: true,
-      glosario: "En palabras simples: un accidente en el taller cuesta caro y frena el trabajo de todos."
-    },
-    {
-      nombre: "Orden de retazos y residuos",
-      critico: false,
-      glosario: "En palabras simples: separar sobrantes mantiene el taller seguro y dentro de norma."
-    }
-  ],
-  "Minería en formalización": [
-    {
-      nombre: "Instrumento ambiental en seguimiento",
-      critico: true,
-      glosario: "En palabras simples: es el documento donde explicas cómo cuidas el entorno al trabajar."
-    },
-    {
-      nombre: "Acreditación de terreno o acuerdo vigente",
-      critico: true,
-      glosario: "En palabras simples: respalda que tienes permiso para operar en ese espacio sin conflictos."
-    },
-    {
-      nombre: "Seguridad y control de insumos",
-      critico: true,
-      glosario: "En palabras simples: reduce riesgos físicos y evita observaciones en tu expediente."
-    }
-  ],
+
+let REQUISITOS_POR_RUBRO = {};
+let baseNormativaCargada = false;
+
+// Se conserva el rubro genérico que ya existía en el script original.
+// No forma parte de los cuatro rubros de la base normativa.
+const REQUISITOS_RUBRO_ADICIONAL = {
   "Otro rubro productivo": [
     {
-      nombre: "Formalidad básica del negocio y permisos",
-      critico: true,
-      glosario: "En palabras simples: te da respaldo para vender con tranquilidad y crecer sin tropiezos."
+      "id": "OT-1",
+      "nombre": "Identificación formal del negocio y permisos base",
+      "critico": true,
+      "glosario": "La base para operar con respaldo y acceder a mejores clientes."
     },
     {
-      nombre: "Calendario de fechas y pagos",
-      critico: false,
-      glosario: "En palabras simples: anotar vencimientos evita pagar recargos solo por olvido."
+      "id": "OT-2",
+      "nombre": "Calendario de fechas y pagos clave",
+      "critico": false,
+      "glosario": "Evita recargos o multas por olvidar una fecha."
     },
     {
-      nombre: "Archivo de cargos y comprobantes",
-      critico: false,
-      glosario: "En palabras simples: guardar constancias te sirve como prueba si alguien pregunta."
+      "id": "OT-3",
+      "nombre": "Respaldo de cargos y comprobantes",
+      "critico": false,
+      "glosario": "Guardar constancias te sirve como prueba si hay una revisión."
     }
   ]
 };
 
+function obtenerListaRequisitos(rubro) {
+  return REQUISITOS_POR_RUBRO[rubro] ||
+    REQUISITOS_RUBRO_ADICIONAL[rubro] ||
+    [];
+}
+
+async function cargarBaseNormativa() {
+  const contenedor = document.getElementById("contenedor-requisitos");
+
+  try {
+    // base_normativa.json debe estar en la misma carpeta que index.html.
+    const respuesta = await fetch("./base_normativa.json", {
+      cache: "no-store"
+    });
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudo leer base_normativa.json (HTTP " + respuesta.status + ").");
+    }
+
+    const datos = await respuesta.json();
+    const rubrosEsperados = [
+      "Pesca artesanal",
+      "Agroindustria",
+      "Manufactura",
+      "Minería en formalización"
+    ];
+
+    const rubrosFaltantes = rubrosEsperados.filter(function (rubro) {
+      return !Array.isArray(datos[rubro]);
+    });
+
+    if (rubrosFaltantes.length > 0) {
+      throw new Error(
+        "Faltan rubros o listas en base_normativa.json: " +
+        rubrosFaltantes.join(", ")
+      );
+    }
+
+    REQUISITOS_POR_RUBRO = datos;
+    baseNormativaCargada = true;
+    console.info("Base normativa cargada correctamente.", REQUISITOS_POR_RUBRO);
+
+    // Renderizar recién después de cargar la información externa.
+    renderizarRequisitosRubro();
+  } catch (error) {
+    console.error("Error al cargar la base normativa:", error);
+
+    contenedor.innerHTML = "";
+    const aviso = document.createElement("p");
+    aviso.className = "glosario-requisito";
+    aviso.textContent =
+      "No se pudo cargar la base normativa. Verifica que el archivo se llame " +
+      "base_normativa.json y esté junto a index.html. Abre el proyecto con " +
+      "Live Server o desde un servidor web; no uses la apertura directa file://.";
+    contenedor.appendChild(aviso);
+
+    const caja = document.getElementById("semaforo-productor");
+    caja.className = "aviso-estado estado-amarillo";
+    caja.textContent = "Base normativa no disponible";
+    document.getElementById("explicacion-productor").textContent =
+      "El diagnóstico no puede calcularse hasta que se cargue base_normativa.json. " +
+      "Comprueba la ubicación y el nombre del archivo y vuelve a actualizar la página.";
+  }
+}
+
 let estadosActualesRequisitos = [];
 
 function obtenerMetricasRequisitos() {
-  const total = estadosActualesRequisitos.length;
-  if (total === 0) {
-    return { porcentaje: 0, criticosPendientes: 0 };
-  }
-
   const rubro = document.getElementById("prod-rubro").value;
-  const listaBase = REQUISITOS_POR_RUBRO[rubro] || [];
+  const listaBase = obtenerListaRequisitos(rubro);
+  let totalAplicables = 0;
   let alDia = 0;
   let criticosPendientes = 0;
 
-  for (let i = 0; i < total; i = i + 1) {
+  for (let i = 0; i < estadosActualesRequisitos.length; i = i + 1) {
     const estado = estadosActualesRequisitos[i];
+
+    // "No aplica" se excluye del porcentaje y del conteo de pendientes.
+    if (estado === "no_aplica") {
+      continue;
+    }
+
+    totalAplicables = totalAplicables + 1;
     const esCritico = listaBase[i] ? listaBase[i].critico : false;
+
     if (estado === "al_dia") {
       alDia = alDia + 1;
     } else if (esCritico) {
@@ -112,47 +124,127 @@ function obtenerMetricasRequisitos() {
     }
   }
 
+  if (totalAplicables === 0) {
+    return { porcentaje: 0, criticosPendientes: 0, totalAplicables: 0 };
+  }
+
   return {
-    porcentaje: Math.round((alDia / total) * 100),
-    criticosPendientes: criticosPendientes
+    porcentaje: Math.round((alDia / totalAplicables) * 100),
+    criticosPendientes: criticosPendientes,
+    totalAplicables: totalAplicables
   };
 }
 
 function renderizarRequisitosRubro() {
   const rubro = document.getElementById("prod-rubro").value;
-  const listaBase = REQUISITOS_POR_RUBRO[rubro] || [];
+  const contenedor = document.getElementById("contenedor-requisitos");
+
+  if (!baseNormativaCargada && rubro !== "Otro rubro productivo") {
+    contenedor.textContent = "Cargando base normativa...";
+    return;
+  }
+
+  const listaBase = obtenerListaRequisitos(rubro);
   estadosActualesRequisitos = listaBase.map(function () {
     return "pendiente";
   });
 
-  const contenedor = document.getElementById("contenedor-requisitos");
   contenedor.innerHTML = "";
+
+  const alcance = document.createElement("p");
+  alcance.className = "glosario-requisito";
+  alcance.textContent = rubro === "Pesca artesanal"
+    ? "Perfil piloto: titular de embarcación artesanal de extracción. Verifica que cada requisito corresponda a la modalidad y características de tu embarcación."
+    : rubro === "Agroindustria"
+    ? "Perfil piloto: fábrica de alimentos vegetales industrializados sujetos a registro sanitario DIGESA. No aplica automáticamente al procesamiento primario."
+    : rubro === "Manufactura"
+    ? "Perfil piloto: taller o establecimiento manufacturero. La licencia depende del municipio y riesgo; el IGA depende de la actividad y clasificación ambiental."
+    : rubro === "Minería en formalización"
+    ? "Perfil piloto: pequeño minero o minero artesanal inscrito en REINFO. El REINFO no sustituye la autorización de inicio o reinicio de actividades."
+    : "Rubro ilustrativo: requisitos generales sin validación normativa; fuera del alcance del piloto.";
+  contenedor.appendChild(alcance);
+
+  const nota = document.createElement("p");
+  nota.textContent =
+    "Diagnóstico parcial y orientativo, basado en declaraciones. No acredita cumplimiento legal integral. " +
+    "Marca No aplica solo cuando la condición descrita no corresponde a tu actividad. " +
+    "Los días ingresados son referenciales; no son plazos legales calculados.";
+  contenedor.appendChild(nota);
 
   for (let i = 0; i < listaBase.length; i = i + 1) {
     const req = listaBase[i];
     const tarjetaReq = document.createElement("div");
     tarjetaReq.className = "item-requisito";
 
-    const badge = req.critico ? '<span class="badge-critico">Clave</span>' : "";
+    const cabecera = document.createElement("div");
+    cabecera.className = "cabecera-requisito";
 
-    tarjetaReq.innerHTML =
-      '<div class="cabecera-requisito">' +
-      "<div><strong>" +
-      req.nombre +
-      "</strong>" +
-      badge +
-      "</div>" +
-      '<select data-indice="' +
-      i +
-      '" class="selector-estado-req">' +
-      '<option value="pendiente">Pendiente</option>' +
-      '<option value="en_tramite">En trámite</option>' +
-      '<option value="al_dia">Al día</option>' +
-      "</select>" +
-      "</div>" +
-      '<p class="glosario-requisito">' +
-      req.glosario +
-      "</p>";
+    const bloqueTitulo = document.createElement("div");
+    const titulo = document.createElement("strong");
+    titulo.textContent = req.nombre || "Requisito sin nombre";
+    bloqueTitulo.appendChild(titulo);
+
+    if (req.critico) {
+      const badge = document.createElement("span");
+      badge.className = "badge-critico";
+      badge.textContent = "Clave";
+      bloqueTitulo.appendChild(badge);
+    }
+
+    const selector = document.createElement("select");
+    selector.setAttribute("data-indice", String(i));
+    selector.className = "selector-estado-req";
+
+    const opciones = [
+      ["pendiente", "Pendiente"],
+      ["en_tramite", "En trámite"],
+      ["al_dia", "Al día"],
+      ["no_aplica", "No aplica"]
+    ];
+
+    opciones.forEach(function (opcion) {
+      const elemento = document.createElement("option");
+      elemento.value = opcion[0];
+      elemento.textContent = opcion[1];
+      selector.appendChild(elemento);
+    });
+
+    cabecera.appendChild(bloqueTitulo);
+    cabecera.appendChild(selector);
+    tarjetaReq.appendChild(cabecera);
+
+    const glosario = document.createElement("p");
+    glosario.className = "glosario-requisito";
+    glosario.textContent = req.glosario || "";
+    tarjetaReq.appendChild(glosario);
+
+    if (req.baseLegal) {
+      const datos = [
+        ["Código", req.id],
+        ["Base legal", req.baseLegal],
+        ["Autoridad competente", req.entidad],
+        ["Aplicabilidad", req.aplicabilidad],
+        ["Plazo", req.plazo]
+      ];
+
+      datos.forEach(function (dato) {
+        if (dato[1]) {
+          const parrafo = document.createElement("p");
+          parrafo.className = "glosario-requisito";
+          parrafo.textContent = dato[0] + ": " + dato[1];
+          tarjetaReq.appendChild(parrafo);
+        }
+      });
+
+      if (req.fuente) {
+        const enlace = document.createElement("a");
+        enlace.href = req.fuente;
+        enlace.target = "_blank";
+        enlace.rel = "noopener noreferrer";
+        enlace.textContent = "Consultar fuente oficial";
+        tarjetaReq.appendChild(enlace);
+      }
+    }
 
     contenedor.appendChild(tarjetaReq);
   }
@@ -172,6 +264,15 @@ function renderizarRequisitosRubro() {
 function evaluarSemaforoMype() {
   const nombre = document.getElementById("prod-nombre").value.trim();
   const rubro = document.getElementById("prod-rubro").value;
+
+  if (!baseNormativaCargada && rubro !== "Otro rubro productivo") {
+    const cajaCarga = document.getElementById("semaforo-productor");
+    cajaCarga.className = "aviso-estado estado-amarillo";
+    cajaCarga.textContent = "Cargando base normativa...";
+    document.getElementById("explicacion-productor").textContent =
+      "Espera a que se cargue base_normativa.json para evaluar el cumplimiento.";
+    return;
+  }
   const diasPlazo = Number(document.getElementById("prod-dias-plazo").value);
   const claridad = document.getElementById("prod-tiene-instrumento").value;
   const metricas = obtenerMetricasRequisitos();
@@ -184,7 +285,11 @@ function evaluarSemaforoMype() {
   let explicacion =
     "Tienes claridad y avance. Sigue revisando tus fechas con anticipación para evitar apuros.";
 
-  if (claridad === "no" || diasPlazo < 0 || metricas.criticosPendientes >= 2) {
+  if (metricas.totalAplicables === 0) {
+    clase = "estado-amarillo";
+    etiqueta = "AMARILLO: Revisa la aplicabilidad";
+    explicacion = "Has marcado todos los requisitos como no aplicables. Verifica el perfil del negocio y confirma que realmente no te corresponde ninguno antes de considerar el diagnóstico.";
+  } else if (claridad === "no" || diasPlazo < 0 || metricas.criticosPendientes >= 2) {
     clase = "estado-rojo";
     etiqueta = "ROJO: Atención urgente";
     explicacion =
@@ -335,6 +440,6 @@ document.getElementById("btn-validar-sub").addEventListener("click", function ()
 });
 
 // Inicializar al cargar
-renderizarRequisitosRubro();
+cargarBaseNormativa();
 actualizarEscenariosRetraso();
 calcularPlanYVigencia();
